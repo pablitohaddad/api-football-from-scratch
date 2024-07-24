@@ -2,13 +2,13 @@ version: '3.8'
 
 services:
   mysql:
-    image: mysql:latest
-    container_name: mysql-container
+    image: mysql:latest # Choose the last image of MySQL
+    container_name: mysql-container # Simple name of container
     ports:
-      - "3306:3306"
+      - "3306:3306" # Normal ports
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: football_simple
+      MYSQL_DATABASE: football_from_scratch # Db's name
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
     volumes:
