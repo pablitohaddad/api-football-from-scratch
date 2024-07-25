@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mysql:
     image: mysql:latest # Choose the last image of MySQL
-    container_name: mysql-container # Simple name of container
+    container_name: mysql-container # Choose a simple name of container
     ports:
       - "3306:3306" # Normal ports
     environment:
