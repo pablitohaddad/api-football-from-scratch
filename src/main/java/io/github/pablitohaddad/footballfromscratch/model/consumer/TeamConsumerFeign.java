@@ -1,6 +1,5 @@
 package io.github.pablitohaddad.footballfromscratch.model.consumer;
 
-import io.github.pablitohaddad.footballfromscratch.config.FeignConfig;
 import io.github.pablitohaddad.footballfromscratch.model.dto.TeamResponseApi;
 import io.github.pablitohaddad.footballfromscratch.model.dto.PlayerResponseApi;
 import io.github.pablitohaddad.footballfromscratch.model.entity.Team;
