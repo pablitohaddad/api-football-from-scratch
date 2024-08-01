@@ -1,12 +1,9 @@
 package io.github.pablitohaddad.footballfromscratch.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,29 +15,19 @@ import java.util.List;
 public class Team {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "uuid", updatable = false, nullable = false)
-    private String uuid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @Column(name = "name", nullable = false, length = 50)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    @Column(name = "age")
-    private Integer age;
+    @Column(name = "founded", nullable = false)
+    private String founded;
 
-    @Column(name = "city", length = 50)
-    private String city;
+    @Column(name = "venue", nullable = false)
+    private String venue;
 
-    @Column(name = "country", length = 50)
-    private String country;
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Player> squad = new ArrayList<>();
 
-    @Column(name = "stadium", length = 20)
-    private String stadium;
-
-    @Column(name = "foundation")
-    private LocalDate foundation;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // Relação de Team para Player
-    @JoinColumn(name = "team_id") // Adiciona a coluna de chave estrangeira na tabela Player
-    private List<Player> players;
 }

@@ -1,40 +1,32 @@
 package io.github.pablitohaddad.footballfromscratch.model.entity;
-
-import io.github.pablitohaddad.footballfromscratch.model.entity.enums.Position;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.time.LocalDate;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "player")
+@ToString
 public class Player {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "uuid", updatable = false, nullable = false)
-    private String uuid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @Column(name = "name", nullable = false, length = 20)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "age")
-    private Integer age;
-
-    @Column(name = "birth_date")
-    private LocalDate birthDate;
-
-    @Enumerated(EnumType.STRING) // o banco de dados vai salvar uma string da posição
     @Column(name = "position", nullable = false)
-    private Position position;
+    private String position;
 
-    @Column(name = "nationality", length = 20)
+    @Column(name = "date_of_birth", nullable = false)
+    private String dateOfBirth;
+
+    @Column(name = "nationality", nullable = false)
     private String nationality;
+
+    @ManyToOne
+    @JoinColumn(name = "team_id") // Define a coluna de chave estrangeira
+    private Team team;
 }

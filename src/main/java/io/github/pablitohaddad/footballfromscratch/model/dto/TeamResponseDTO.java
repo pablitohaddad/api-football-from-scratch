@@ -1,6 +1,9 @@
 package io.github.pablitohaddad.footballfromscratch.model.dto;
 
 import io.github.pablitohaddad.footballfromscratch.model.entity.Player;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,18 +18,16 @@ import java.util.List;
 @Setter
 public class TeamResponseDTO {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String name;
 
-    private Integer age;
+    private String founded;
 
-    private String city;
+    private String venue;
 
-    private String country;
-
-    private String stadium;
-
-    private LocalDate foundation;
-
-    private List<Player> players;
+    private List<Player> squad;
 
 }
