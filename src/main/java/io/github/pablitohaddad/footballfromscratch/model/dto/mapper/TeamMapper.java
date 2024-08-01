@@ -16,8 +16,4 @@ public class TeamMapper {
         ModelMapper mapper = new ModelMapper();
         return mapper.map(createDTO, Team.class);
     }
-
-
-
-
 }
